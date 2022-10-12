@@ -3,6 +3,12 @@ body {
 }
 
 
+code {
+  background-color:#EEEEEE;
+  font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+}
+
+
 .footer .icon-link {
     font-size: 25px;
     color: #000;
