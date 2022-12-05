@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SOCD: Synthesized Object-Level Change Detection Dataset">
+  <meta name="keywords" content="change detection, remote sensing, object detection, graph matching">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SOCD: Synthesized Object-Level Change Detection Dataset</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SOCD: Synthesized Object-Level Change Detection Dataset</h1>
+
+          <div class="column has-text-centered">
+            <p><font size="+2">[<a href="./index.html">Go Back to the Project Page</a>]</font></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="dataset">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Descriptions</h2>
+    <div class="content has-text-justified">
+      <p>
+        The SOCD dataset is the first dataset that can be used to evaluate object-level change detection.
+        The SOCD dataset comprises 15,000 perspective image pairs and object-level change labels
+        synthesized by <a href="https://github.com/carla-simulator/carla">CARLA simulator</a> [1].
+      </p>
+    </div>
+
+    <h4 class="subtitle is-4">Images</h4>
+    <div class="content has-text-justified">
+      <p>
+        The SOCD dataset contains 15,000 perspective image pairs rendered
+        from cameras in city-like environments of the CARLA simulator.
+        The field of view of the images is 90-degree, and the image size is 1080 &times 1080.
+      </p>
+    </div>
+
+    <h4 class="subtitle is-4">Labels</h4>
+    <div class="content has-text-justified">
+      <p>
+        In addition to pixel-level (semantic change mask) and object-level (instance mask) change labels,
+        semantic masks for entire scenes, depth images, and correspondences between objects in image pairs
+        are available.
+      </p>
+      <p>
+        There are four object categories:
+        <ul>
+            <li>Buildings,</li>
+            <li>Cars,</li>
+            <li>Poles,</li>
+            <li>traffic signs and lights.</li>
+        </ul>
+      </p>
+      <p>
+        The figure below shows examples of the instance mask and bounding box for the objects/changes.
+        The light blue is buildings, pink is cars, and green is poles.
+        Please see <a href="">this repository</a> if you would like to know more about the label format.
+      </p>
+      <figure>
+        <img
+          src="https://www.mdpi.com/remotesensing/remotesensing-14-04225/article_deploy/html/images/remotesensing-14-04225-g005.png"
+          width="640">
+      </figure>
+    </div>
+
+    <h4 class="subtitle is-4">Viewpoint differences</h4>
+    <div class="content has-text-justified">
+      <p>
+        We rendered the image pairs with varying viewpoint differences 
+        to investigate the robustness of the change detection method to viewpoint differences.
+        Specifically, the SOCD dataset has four categories 
+        {S<sub>1</sub>, S<sub>2</sub>, S<sub>3</sub>, S<sub>4</sub>} 
+        with varying yaw angle differences.
+        In S<sub>1</sub>, there is no difference in yaw angle.
+        In S<sub>2, 3, 4</sub>, the difference in yaw angle is uniformly sampled within the ranges of
+        [0, 10], [10, 20], and [20, 30].
+      </p>
+      <p>
+        The figure below shows image pairs from the dataset with viewpoint differences.
+        For more details, please see <a href="https://www.mdpi.com/2072-4292/14/17/4225#">our paper</a>.
+      </p>
+      <figure>
+        <img
+          src="https://www.mdpi.com/remotesensing/remotesensing-14-04225/article_deploy/html/images/remotesensing-14-04225-g007.png"
+          width="720">
+      </figure>
+    </div>
+
+    <h4 class="subtitle is-4">Directory Structure</h4>
+    <div class="content has-text-justified">
+      <pre><code>│
+├── Town01/         # RGB images
+├── Town02/         # RGB images
+├── Town03/         # RGB images
+├── chmasks/        # binary change masks
+│   ├── Town01/
+│   ├── Town02/
+│   └── Town03/
+├── semmask/        # semantic masks
+│   ├── Town01/
+│   ├── Town02/
+│   └── Town03/
+└── labels/         # label files
+    ├── train[1-4].json
+    ├── val[1-4].json
+    └── test[1-4].json</code></pre>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" id="copyright&licenses">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Copyright & License</h2>
+      <p>
+        The SOCD dataset and sample code on this page are copyrighted
+        by <a href="https://www.aist.go.jp/index_en.html">
+            the National Institute of Advanced Industrial Science and Technology (AIST)</a> 
+        and published under the <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a> license.
+      </p>
+  </div>
+</section>
+
+
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Download</h2>
+    <p>
+      To reduce the size of the data to be distributed, RGB images are converted from PNG format to JPG format. 
+      Since the experimental results published in the paper are based on PNG images, 
+      we will soon publish the experimental results using JPG images on this page.
+    </p>
+    <p>
+      If you use this dataset please cite our paper:
+    </p>
+    <pre><code>@article{objcd,
+  author    = {Doi, Kento and Hamaguchi, Ryuhei and Iwasawa, Yusuke and Onishi, Masaki and Matsuo, Yutaka and Sakurada, Ken},
+  title     = {Detecting Object-Level Scene Changes in Images with Viewpoint Differences Using Graph Matching},
+  journal   = {Remote Sensing},
+  volume    = {14},
+  number    = {17},
+  year      = {2022},
+}</code></pre>
+    <p>
+      Terms of use are displayed after you click the following button. When you agree to the term of use, you can download PSCD dataset.
+    </p>
+    <span class="link-block mylist-indent-1">
+      <a href="./terms_of_use.html"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+          <i class="fas fa-cloud-download-alt"></i>
+        </span>
+        <span>Download</span>
+      </a>
+    </span>
+  </div>
+</section>
+
+
+<!-- Acknowledgement -->
+<section class="section" id="acknowledgement">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Acknowledgment</h2>
+    <p>
+      We wish to thank A. Dosovitskiy, G. Ros, F. Codevilla, A. Lopez, and V. Koltun for developing an excellent simulator.
+    </p>
+    <p>
+      This work was partially supported by JSPS KAKENHI (grantnumber:20H04217).
+    </p>
+  </div>
+</section>
+
+
+<!-- References -->
+<section class="section" id="references">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">References</h2>
+    <ol>
+      <li> A. Dosovitskiy, G. Ros, F. Codevilla, A. Lopez, V. Koltun. (2017).
+          "CARLA: An Open Urban Driving Simulator.": 
+          In Proceedings of the 1st Annual Conference on Robot Learning, 78, 1–16.
+          (webpage: <a href="https://carla.org/">https://carla.org/</a>,
+          license: <a href="https://github.com/carla-simulator/carla#license">https://github.com/carla-simulator/carla#licenses</a>)
+    </ol>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://homes.cs.washington.edu/~kpar/nerfies/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This webpage is built with the template from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
