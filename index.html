@@ -76,7 +76,7 @@
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href=""
+                <a href="./dataset.html"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
@@ -171,108 +171,13 @@
 </section>
 
 
-<section class="section" id="dataset">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">SOCD: Synthesized Object-Level Change Detection Dataset</h2>
-    <div class="content has-text-justified">
-      <p>
-        The SOCD dataset is the first dataset that can be used to evaluate object-level change detection.
-        The SOCD dataset comprises 15,000 perspective image pairs and object-level change labels
-        synthesized by <a href="https://github.com/carla-simulator/carla">CARLA simulator</a> [1].
-      </p>
-    </div>
-
-    <h4 class="subtitle is-4">Images</h4>
-    <div class="content has-text-justified">
-      <p>
-        The SOCD dataset contains 15,000 perspective image pairs rendered
-        from cameras in city-like environments of the CARLA simulator.
-        The field of view of the images is 90-degree, and the image size is 1080 &times 1080.
-      </p>
-    </div>
-
-    <h4 class="subtitle is-4">Labels</h4>
-    <div class="content has-text-justified">
-      <p>
-        In addition to pixel-level (semantic change mask) and object-level (instance mask) change labels,
-        semantic masks for entire scenes, depth images, and correspondences between objects in image pairs
-        are available.
-      </p>
-      <p>
-        There are four object categories:
-        <ul>
-            <li>Buildings,</li>
-            <li>Cars,</li>
-            <li>Poles,</li>
-            <li>traffic signs and lights.</li>
-        </ul>
-      </p>
-      <p>
-        The figure below shows examples of the instance mask and bounding box for the objects/changes.
-        The light blue is buildings, pink is cars, and green is poles.
-        Please see <a href="">this repository</a> if you would like to know more about the label format.
-      </p>
-      <figure>
-        <img
-          src="https://www.mdpi.com/remotesensing/remotesensing-14-04225/article_deploy/html/images/remotesensing-14-04225-g005.png"
-          width="640">
-      </figure>
-    </div>
-
-    <h4 class="subtitle is-4">Viewpoint differences</h4>
-    <div class="content has-text-justified">
-      <p>
-        We rendered the image pairs with varying viewpoint differences 
-        to investigate the robustness of the change detection method to viewpoint differences.
-        Specifically, the SOCD dataset has four categories 
-        {S<sub>1</sub>, S<sub>2</sub>, S<sub>3</sub>, S<sub>4</sub>} 
-        with varying yaw angle differences.
-        In S<sub>1</sub>, there is no difference in yaw angle.
-        In S<sub>2, 3, 4</sub>, the difference in yaw angle is uniformly sampled within the ranges of
-        [0, 10], [10, 20], and [20, 30].
-      </p>
-      <p>
-        The figure below shows image pairs from the dataset with viewpoint differences.
-        For more details, please see <a href="https://www.mdpi.com/2072-4292/14/17/4225#">our paper</a>.
-      </p>
-      <figure>
-        <img
-          src="https://www.mdpi.com/remotesensing/remotesensing-14-04225/article_deploy/html/images/remotesensing-14-04225-g007.png"
-          width="720">
-      </figure>
-    </div>
-
-    <h4 class="subtitle is-4">Directory Structure</h4>
-    <div class="content has-text-justified">
-      <pre><code>root/
-├── Town01/         # RGB images
-├── Town02/
-├── Town03/
-├── chmasks/        # binary change masks
-│   ├── Town01/
-│   ├── Town02/
-│   └── Town03/
-├── semmask/        # semantic masks
-│   ├── Town01/
-│   ├── Town02/
-│   └── Town03/
-└── labels/         # label files
-    ├── train[1-4].json
-    ├── val[1-4].json
-    └── test[1-4].json</code></pre>
-    </div>
-
-  </div>
-</section>
-
-
 <section class="section" id="results">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Experimental Results</h2>
     <div class="content has-text-justified">
       <p>
         To demonstrate the effectiveness of our proposed network,
-        we conducted experiments using the SOCD dataset.
+        we conducted experiments using the <a href="./dataset.html">SOCD dataset</a>.
       </p>
     </div>
 
@@ -308,13 +213,13 @@
             <th>Method</th> <th align=center>Δyaw=0°</th> <th align=center>Δyaw=0-10°</th> <th align=center>Δyaw=10-20°</th> <th align=center>Δyaw=20-30°</th>
         </tr>
         <tr>
-            <td>ChangeNet [2]</td> <td align=center>0.219</td> <td align=center>0.142</td> <td align=center>0.155</td> <td align=center>0.133</td>
+            <td>ChangeNet [1]</td> <td align=center>0.219</td> <td align=center>0.142</td> <td align=center>0.155</td> <td align=center>0.133</td>
         </tr>
         <tr>
-            <td>CSSCDNet [3] (w/o correlation layer)</td> <td align=center>0.453</td> <td align=center>0.234</td> <td align=center>0.241</td> <td align=center>0.205</td>
+            <td>CSSCDNet [2] (w/o correlation layer)</td> <td align=center>0.453</td> <td align=center>0.234</td> <td align=center>0.241</td> <td align=center>0.205</td>
         </tr>
         <tr>
-            <td>CSSCDNet [3] (w/ correlation layer)</td> <td align=center>0.508</td> <td align=center>0.274</td> <td align=center>0.258</td> <td align=center>0.208</td>
+            <td>CSSCDNet [2] (w/ correlation layer)</td> <td align=center>0.508</td> <td align=center>0.274</td> <td align=center>0.258</td> <td align=center>0.208</td>
         </tr>
         <tr>
             <td>Ours (w/o graph matching module)</td> <td align=center>0.406</td> <td align=center>0.337</td> <td align=center>0.335</td> <td align=center>0.295</td>
@@ -327,19 +232,6 @@
         </tr>
       </table>
     </div>
-  </div>
-</section>
-
-
-<section class="section" id="copyright&licenses">
-  <div class="container is-max-desktop content">
-    <h2 class="title is-3">Copyright & License</h2>
-      <p>
-        The SOCD dataset and sample code on this page are copyrighted
-        by <a href="https://www.aist.go.jp/index_en.html">
-            the National Institute of Advanced Industrial Science and Technology (AIST)</a> 
-        and published under the <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a> license.
-      </p>
   </div>
 </section>
 
@@ -364,9 +256,6 @@
   <div class="container is-max-desktop content">
     <h2 class="title is-3">Acknowledgment</h2>
     <p>
-      We wish to thank A. Dosovitskiy, G. Ros, F. Codevilla, A. Lopez, and V. Koltun for developing an excellent simulator.
-    </p>
-    <p>
       This work was partially supported by JSPS KAKENHI (grantnumber:20H04217).
     </p>
   </div>
@@ -378,11 +267,6 @@
   <div class="container is-max-desktop content">
     <h2 class="title is-3">References</h2>
     <ol>
-      <li> A. Dosovitskiy, G. Ros, F. Codevilla, A. Lopez, V. Koltun. (2017).
-          "CARLA: An Open Urban Driving Simulator.": 
-          In Proceedings of the 1st Annual Conference on Robot Learning, 78, 1–16.
-          (webpage: <a href="https://carla.org/">https://carla.org/</a>,
-          license: <a href="https://github.com/carla-simulator/carla#license">https://github.com/carla-simulator/carla#licenses</a>)
       <li> A. Varghese, J. Gubbi, A. Ramaswamy. (2018).
           "ChangeNet: A Deep Learning Architecture for Visual Change Detection.":
           In Proceedings of the ECCV Workshop.
